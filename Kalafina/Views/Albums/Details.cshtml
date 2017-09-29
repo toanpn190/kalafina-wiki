@@ -1,0 +1,56 @@
+﻿@model Kalafina.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <h4>Album</h4>
+    <hr />
+    
+    <div class="col-lg-4 col-md-4 col-sm-8 text-center">
+        <img class="card-img-top" width="300" src="@Model.ImageUrl" alt="@Model.ImageUrl">
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+        </dl>
+
+        <p>
+            <strong>Tracklist</strong>
+        </p>
+        <table class="table">
+            @foreach (var item in Model.Songs)
+            {
+                <tr>
+                    <td class="text-right">
+                        @Html.DisplayFor(modelItem => item.TrackNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

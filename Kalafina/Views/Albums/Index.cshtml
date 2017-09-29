@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Kalafina.Models.Album>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card text-center">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <a href="@Url.Action("Details", new { id = item.ID })">
+                    <img class="card-img-top" width="300" src="@item.ImageUrl" alt="@item.ImageUrl">
+                </a>
+                <div>
+                    @Html.ActionLink(item.Title, "Detals", new { id = item.ID })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    @Html.ActionLink("Create New", "Create", null, new { @class="btn btn-primary btn-sm"})
+</div>
