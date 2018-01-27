@@ -50,6 +50,7 @@ namespace Kalafina.Controllers
         }
 
         // GET: Songs/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -71,10 +72,9 @@ namespace Kalafina.Controllers
         }
         
         // POST: Songs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "TrackNo,AlbumID,Title")] Song song)
         {
             if (ModelState.IsValid)
@@ -89,6 +89,7 @@ namespace Kalafina.Controllers
         }
 
         // GET: Songs/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -106,6 +107,7 @@ namespace Kalafina.Controllers
         // POST: Songs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Song song = await db.Songs.FindAsync(id);

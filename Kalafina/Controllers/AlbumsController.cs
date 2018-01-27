@@ -64,6 +64,7 @@ namespace Kalafina.Controllers
 
 
         // GET: Albums/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,6 +85,7 @@ namespace Kalafina.Controllers
         // POST: Albums/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "ReleaseDate,ImageUrl,Title")] Album album)
         {
             if (ModelState.IsValid)
@@ -96,6 +98,7 @@ namespace Kalafina.Controllers
         }
 
         // GET: Albums/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -113,6 +116,7 @@ namespace Kalafina.Controllers
         // POST: Albums/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Album album = await db.Albums.FindAsync(id);
