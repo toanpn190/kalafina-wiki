@@ -7,22 +7,24 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Kalafina.Migrations;
 using Kalafina.Models;
 
 namespace Kalafina.Controllers
 {
+    [Authorize]
     public class AlbumsController : Controller
     {
         private MusicContext db = new MusicContext();
 
         // GET: Albums
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             return View(await db.Albums.ToListAsync());
         }
 
         // GET: Albums/Details/5
+        [AllowAnonymous]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,6 +32,7 @@ namespace Kalafina.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
             }
             var album = await db.Albums.FindAsync(id);
+            album.Songs = album.Songs.OrderBy(s => s.TrackNo).ToList();
 
             if (album == null)
             {

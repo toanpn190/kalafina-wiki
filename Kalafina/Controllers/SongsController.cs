@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Kalafina.Migrations;
 using Kalafina.Models;
 
 namespace Kalafina.Controllers
 {
+    [Authorize]
     public class SongsController : Controller
     {
         private MusicContext db = new MusicContext();
 
         // GET: Songs
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             var songs = db.Songs.Include(s => s.Album);
-            return View(await songs.ToListAsync());
+            return View(await songs.OrderBy(s => s.AlbumID).ToListAsync());
         }
 
         // GET: Songs/Create
@@ -55,22 +56,26 @@ namespace Kalafina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Song song = await db.Songs.FindAsync(id);
+            var song = await db.Songs.FindAsync(id);
             if (song == null)
             {
                 return HttpNotFound();
             }
 
-            PopulateAlbumsDropDownList();
+            if (song.Album != null)
+            {
+                PopulateAlbumsDropDownList();
+            }
+            
             return View(song);
         }
-
+        
         // POST: Songs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,TrackNo,AlbumID,Title")] Song song)
+        public async Task<ActionResult> Edit([Bind(Include = "TrackNo,AlbumID,Title")] Song song)
         {
             if (ModelState.IsValid)
             {
@@ -117,6 +122,7 @@ namespace Kalafina.Controllers
                                    select a;
             ViewBag.AlbumID = new SelectList(albums, "ID", "Title");
         }
+        
 
         protected override void Dispose(bool disposing)
         {
