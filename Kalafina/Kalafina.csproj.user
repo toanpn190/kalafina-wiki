@@ -13,6 +13,13 @@
     <WebStackScaffolding_IsAsyncSelected>True</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>KalafinaWiki - Web Deploy</NameOfLastUsedPublishProfile>
+    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

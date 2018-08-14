@@ -95,3 +95,5 @@ C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\bin\System.Web.Http.Ow
 C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\obj\Debug\Kalafina.Migrations.MusicMigrations.Initial.resources
 C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\obj\Debug\Kalafina.csproj.GenerateResource.Cache
 C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\obj\Debug\Kalafina.Migrations.ApplicationUserMigrations.InitialUserDb.resources
+C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\obj\Debug\Kalafina.csproj.CoreCompileInputs.cache
+C:\Users\crowe\Dropbox\Learning\ASP.NET\Kalafina\Kalafina\obj\Debug\Kalafina.csproj.CopyComplete
